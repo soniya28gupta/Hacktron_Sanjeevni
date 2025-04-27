@@ -1060,7 +1060,47 @@ const Hospitals = () => {
   image: "hospital23.avif",
   coordinates: { lat: 23.0412, lng: 72.5107 },
   address: "Off S.G. Highway, Bodakdev, Ahmedabad 380054"
+},
+{
+  id: 78,
+  name: "Sanjeevini Multi Speciality Hospital",
+  location: "Karnal Ganj, Piproda Khurd, Guna",
+  city: "Guna",
+  specialties: ["Anesthesiology", "Cardiology", "Dentistry", "Dermatology", "ENT", "General Medicine", "General Surgery", "Nephrology", "Neurology", "Oncology", "Ophthalmology", "Pathology", "Pediatrics", "Pulmonology", "Radiology", "Urology", "Gynecology and Obstetrics", "Rheumatology"],
+  rating: 4.5,
+  phone: "+91 7542 250288",
+  hours: "24 hours",
+  image: "sanjeevini_hospital.jpg",
+  coordinates: { lat: 24.6470, lng: 77.3130 },
+  address: "Sanjeevini Multi Speciality Hospital, Karnal Ganj, Piproda Khurd, Guna, Madhya Pradesh 473001"
+},
+{
+  id: 79,
+  name: "Meenakshi Hospital",
+  location: "Dalvi Nagar Colony, New City Colony, Guna",
+  city: "Guna",
+  specialties: ["General Medicine", "Oral Surgery"],
+  rating: 3.6,
+  phone: "+91 7542 253181",
+  hours: "24 hours",
+  image: "meenakshi_hospital.jpg",
+  coordinates: { lat: 24.6485, lng: 77.3120 },
+  address: "Dalvi Nagar Colony, New City Colony, Guna, Madhya Pradesh 473001"
+},
+{
+  id: 80,
+  name: "City Hospital Guna",
+  location: "Porwal Colony Rd, Vindhyachal Colony, Model Town Colony, Guna",
+  city: "Guna",
+  specialties: ["General Medicine"],
+  rating: 4.1,
+  phone: "+91 7542 225288",
+  hours: "24 hours",
+  image: "city_hospital_guna.jpg",
+  coordinates: { lat: 24.6510, lng: 77.3180 },
+  address: "Porwal Colony Rd, Porwal Colony, Vindhyachal Colony, Model Town Colony, Guna, Madhya Pradesh 473001"
 }
+
       ];
       
       setHospitals(sampleHospitals);

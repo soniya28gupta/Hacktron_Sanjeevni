@@ -2,7 +2,7 @@
 .hospitals-page-wrapper {
   width: 100vw; /* Use viewport width */
   min-height: 100vh;
-  background-color: #f5f7fa;
+  
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* Prevent horizontal scrolling */
