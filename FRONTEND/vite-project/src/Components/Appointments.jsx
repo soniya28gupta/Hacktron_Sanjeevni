@@ -1,69 +1,68 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import ReactPlayer from 'react-player'; // Import React Player
 import '../css/Appointments.css'; // Import the CSS file
+import { extractMood, moodToPlaylist } from '../utils/extractMood'; // Import the utility functions
 
 const Appointments = () => {
-  const [appointments, setAppointments] = useState([]);
-  const [doctorName, setDoctorName] = useState('');
-  const [appointmentDate, setAppointmentDate] = useState('');
+  const [mood, setMood] = useState('');
+  const [extractedMood, setExtractedMood] = useState(''); // State to store the extracted mood
+  const [videos, setVideos] = useState([]); // State to store the list of video URLs
+  const [error, setError] = useState('');
 
-  useEffect(() => {
-    const savedAppointments = JSON.parse(localStorage.getItem('appointments')) || [];
-    setAppointments(savedAppointments);
-  }, []);
+  const handleGetRecommendations = () => {
+    setError('');
+    setVideos([]);
 
-  const handleAddAppointment = (e) => {
-    e.preventDefault();
-    if (doctorName && appointmentDate) {
-      const newAppointments = [...appointments, { doctorName, appointmentDate }];
-      setAppointments(newAppointments);
-      localStorage.setItem('appointments', JSON.stringify(newAppointments));
-      setDoctorName('');
-      setAppointmentDate('');
+    // Extract mood from the input string
+    const moodFromInput = extractMood(mood);
+    setExtractedMood(moodFromInput || 'No valid mood detected'); // Update the extracted mood state
+
+    if (!moodFromInput) {
+      setError('No valid mood detected. Please include one of the following moods: happy, sad, angry, depressed, anxiety.');
+      return;
+    }
+
+    // Get all videos for the extracted mood
+    const playlist = moodToPlaylist[moodFromInput];
+    if (Array.isArray(playlist)) {
+      setVideos(playlist); // Set the videos if the playlist is an array
+    } else {
+      setError('No videos available for the detected mood.');
     }
   };
 
   return (
-    <div className="appointments-container">
-      <div className="form-container">
-        <h1>Appointments</h1>
-        <form onSubmit={handleAddAppointment}>
-          <div>
-            <label htmlFor="doctorName">Doctor's Name:</label>
-            <input
-              id="doctorName"
-              name="doctorName"
-              type="text"
-              value={doctorName}
-              onChange={(e) => setDoctorName(e.target.value)}
-              required
-            />
+    <>
+      <h1 className="appointments-heading">Healing begins where words end-let the music mend your soul.</h1>
+      <p>Don't know what video you feel like to watch? Tell how you are feeling and we will help you with that!</p>
+
+      <div className="appointments-container">
+        <textarea
+          placeholder="Write about your mood..."
+          value={mood}
+          onChange={(e) => setMood(e.target.value)}
+          className="appointments-textarea"
+        />
+        <button onClick={handleGetRecommendations} className="submit-button">
+          Submit
+        </button>
+        {extractedMood && (
+          <p className="extracted-mood">
+            <strong>Extracted Mood:</strong> {extractedMood}
+          </p>
+        )}
+        {videos.length > 0 && (
+          <div className="videos-grid">
+            {videos.map((video, index) => (
+              <div key={index} className="video-item">
+                <ReactPlayer url={video} controls width="100%" />
+              </div>
+            ))}
           </div>
-          <div>
-            <label htmlFor="appointmentDate">Appointment Date:</label>
-            <input
-              id="appointmentDate"
-              name="appointmentDate"
-              type="date"
-              value={appointmentDate}
-              onChange={(e) => setAppointmentDate(e.target.value)}
-              required
-            />
-          </div>
-          <button type="submit">Add Appointment</button>
-        </form>
+        )}
+        {error && <p className="error-message">{error}</p>}
       </div>
-      <div className="appointments-list">
-        <h2>Your Appointments</h2>
-        <ul>
-          {appointments.map((appointment, index) => (
-            <li key={index}>
-              <strong>Doctor:</strong> {appointment.doctorName} <br />
-              <strong>Date:</strong> {appointment.appointmentDate}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    </>
   );
 };
 

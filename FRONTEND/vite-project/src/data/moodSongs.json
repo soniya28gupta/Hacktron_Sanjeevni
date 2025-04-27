@@ -1,0 +1,7 @@
+{
+  "happy": ["songs/happy_song1.mp3", "songs/happy_song2.mp3"],
+  "sad": ["songs/sad_song1.mp3", "songs/sad_song2.mp3"],
+  "angry": ["songs/angry_song1.mp3", "songs/angry_song2.mp3"],
+  "depressed": ["songs/depressed_song1.mp3", "songs/depressed_song2.mp3"],
+  "anxiety": ["songs/anxiety_song1.mp3", "songs/anxiety_song2.mp3"]
+}
