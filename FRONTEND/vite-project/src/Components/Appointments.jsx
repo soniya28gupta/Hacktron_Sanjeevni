@@ -37,15 +37,17 @@ const Appointments = () => {
       <p>Don't know what video you feel like to watch? Tell how you are feeling and we will help you with that!</p>
 
       <div className="appointments-container">
-        <textarea
-          placeholder="Write about your mood..."
-          value={mood}
-          onChange={(e) => setMood(e.target.value)}
-          className="appointments-textarea"
-        />
-        <button onClick={handleGetRecommendations} className="submit-button">
-          Submit
-        </button>
+        <div className="input-container">
+          <textarea
+            placeholder="Write about your mood..."
+            value={mood}
+            onChange={(e) => setMood(e.target.value)}
+            className="appointments-textarea"
+          />
+          <button onClick={handleGetRecommendations} className="submit-button">
+            Submit
+          </button>
+        </div>
         {extractedMood && (
           <p className="extracted-mood">
             <strong>Extracted Mood:</strong> {extractedMood}
