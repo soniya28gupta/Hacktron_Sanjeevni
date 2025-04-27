@@ -33,7 +33,7 @@ const LandingPage = () => {
     <div className={`landing-page ${isScrolled ? 'shrink' : ''}`}>
       <div className={`hero ${isScrolled ? 'shrink' : ''}`}>
         <div className="landing-overlay">
-          <h1 className="landing-main-title">Sukhayu</h1>
+          <h1 className="landing-main-title">Sanjeevni</h1>
           <h2 className="landing-sub-title">Find the care you deserve</h2>
           <button className="landing-button">Explore More</button>
         </div>
@@ -117,8 +117,8 @@ const LandingPage = () => {
           height: '100px', // Decreased height
         }}
       >
-        <p>&copy; 2023 Sukhayu. All rights reserved.</p>
-        <p>Contact us: support@sukhayu.com | +1 234 567 890</p>
+        <p>&copy; 2023 Sanjeevni. All rights reserved.</p>
+        <p>Contact us: support@sanjeevni.com | +1 234 567 890</p>
         <div className="footer-links">
           <a href="#privacy-policy">Privacy Policy</a>
           <a href="#accessibility-statement">Accessibility Statement</a>
@@ -127,7 +127,7 @@ const LandingPage = () => {
         </div>
         <div className="footer-about">
           <p>
-            Sukhayu is dedicated to connecting patients with healthcare providers, offering resources for blood donation, 
+            Sanjeevni is dedicated to connecting patients with healthcare providers, offering resources for blood donation, 
             online appointments, and hospital information. We strive to make healthcare accessible and convenient for everyone.
           </p>
         </div>
